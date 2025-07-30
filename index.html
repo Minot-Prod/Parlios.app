@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoires Apaisantes pour Enfants</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Crée ton Histoire du Soir Apaisante</h1>
+        <div id="theme-selection" class="screen active">
+            <p>Choisis le monde de ton histoire :</p>
+            <button class="theme-button" data-theme="foret">La Forêt des Rêves Endormis</button>
+            <button class="theme-button" data-theme="nuage">Le Voyage du Nuage Douillet</button>
+            <button class="theme-button" data-theme="jardin">Le Jardin Secret de la Nuit</button>
+            <button class="theme-button" data-theme="goutte">L'Aventure de la Petite Goutte d'Eau</button>
+        </div>
+
+        <div id="story-progress" class="screen">
+            <p id="story-text"></p>
+            <div id="choices-container" class="choices-grid">
+                </div>
+        </div>
+
+        <div id="final-story" class="screen">
+            <h2>Ton Histoire est Prête !</h2>
+            <p id="full-story-text"></p>
+            <button id="read-aloud-button">Écouter l'Histoire 🎵</button>
+        </div>
+    </div>
+
+    <audio id="background-music" loop autoplay>
+        <source src="music/apaisante.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
