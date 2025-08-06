@@ -1,40 +1,57 @@
+
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histoires Apaisantes pour Enfants</title>
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Générateur d'Histoires Apaisantes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Nunito', 'sans-serif'],
+            },
+            colors: {
+              'deep-slate': '#1E293B',
+              'light-slate': '#F1F5F9',
+              'calm-indigo': '#6366F1',
+              'soft-purple': '#8B5CF6',
+              'glow-purple': '#A78BFA',
+            },
+            animation: {
+              'fade-in': 'fadeIn 1s ease-in-out',
+              'fade-in-slow': 'fadeIn 2s ease-in-out',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: 0, transform: 'translateY(10px)' },
+                '100%': { opacity: 1, transform: 'translateY(0)' },
+              },
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.11.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
 </head>
-<body>
-    <div class="container">
-        <h1>Crée ton Histoire du Soir Apaisante</h1>
-        <div id="theme-selection" class="screen active">
-            <p>Choisis le monde de ton histoire :</p>
-            <button class="theme-button" data-theme="foret">La Forêt des Rêves Endormis</button>
-            <button class="theme-button" data-theme="nuage">Le Voyage du Nuage Douillet</button>
-            <button class="theme-button" data-theme="jardin">Le Jardin Secret de la Nuit</button>
-            <button class="theme-button" data-theme="goutte">L'Aventure de la Petite Goutte d'Eau</button>
-        </div>
-
-        <div id="story-progress" class="screen">
-            <p id="story-text"></p>
-            <div id="choices-container" class="choices-grid">
-                </div>
-        </div>
-
-        <div id="final-story" class="screen">
-            <h2>Ton Histoire est Prête !</h2>
-            <p id="full-story-text"></p>
-            <button id="read-aloud-button">Écouter l'Histoire 🎵</button>
-        </div>
-    </div>
-
-    <audio id="background-music" loop autoplay>
-        <source src="music/apaisante.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-
-    <script src="script.js"></script>
-</body>
+  <body class="bg-deep-slate text-light-slate antialiased">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
