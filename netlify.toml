@@ -1,0 +1,12 @@
+# Redirection vers domaine principal
+[[redirects]]
+  from = "https://www.parlios.ca/*"
+  to = "https://parlios.ca/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://parlios-preview.netlify.app/*"
+  to = "https://parlios.ca/:splat"
+  status = 301
+  force = true
