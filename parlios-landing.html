@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!--
+    Architecture générale (AIDA):
+    - Awareness: Hero section immersive avec promesse chiffrée et CTA primaire.
+    - Interest: Preuve sociale + valeur ajoutée détaillée du moteur Parlios Engine™.
+    - Desire: Démonstrations des packs, témoignages, FAQ, bloc confiance.
+    - Action: Pricing avec CTA, formulaire lead magnet, CTA sticky "Démarrer en 48h".
+    Objectifs conversion: maximiser clics CTA, soumissions formulaires, engagement scroll.
+  -->
+  <meta charset="utf-8">
+  <title>Parlios | L'IA qui apprend votre métier et répond en 5 minutes</title>
+  <meta name="description" content="Transformez votre business local en organisation ultra-efficace avec Parlios Engine™ : 480h gagnées, réponses 10× plus rapides, +50% d'engagement." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Parlios | From corner shop to global empire" />
+  <meta property="og:description" content="Parlios Engine™ aide commerces et créateurs à répondre 10× plus vite, gagner 480h/an et booster l'engagement de 50%." />
+  <meta property="og:image" content="assets/hero-parlios.png" />
+  <meta property="og:url" content="https://parlios.example.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Parlios Engine™ pour commerces et créateurs" />
+  <meta name="twitter:description" content="IA concrète et abordable : 480h/an gagnées, réponse en 5 minutes, voix personnalisée." />
+  <meta name="twitter:image" content="assets/hero-parlios.png" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="assets/site.webmanifest" />
+  <style>
+    :root {
+      color-scheme: light dark;
+      --primary: #5b3dff;
+      --primary-dark: #3b28b6;
+      --secondary: #ff8c42;
+      --bg: #f4f5fb;
+      --bg-alt: #ffffff;
+      --bg-dark: #101322;
+      --text: #1e1b2a;
+      --text-muted: #5a5873;
+      --text-on-dark: #f6f7ff;
+      --border: rgba(30,27,42,0.12);
+      --shadow: 0 20px 45px rgba(46,36,113,0.12);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --max-width: 1200px;
+      --transition: 220ms ease;
+      font-size: 16px;
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #070812;
+        --bg-alt: #0f101d;
+        --text: #f6f7ff;
+        --text-muted: #c0c3ff;
+        --border: rgba(255,255,255,0.08);
+        --shadow: 0 20px 45px rgba(6,9,35,0.8);
+      }
+      body {
+        background-image: radial-gradient(circle at 20% 20%, rgba(91,61,255,0.3), transparent 60%), radial-gradient(circle at 80% 10%, rgba(255,140,66,0.25), transparent 55%);
+      }
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 1rem;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 0 0 12px 12px;
+      z-index: 999;
+      transition: top 0.3s;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(244,245,251,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    @media (prefers-color-scheme: dark) {
+      header {
+        background: rgba(7,8,18,0.9);
+      }
+    }
+    .nav-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      gap: 1rem;
+    }
+    nav ul {
+      display: flex;
+      gap: clamp(0.5rem, 2vw, 1.5rem);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+    nav a:focus-visible,
+    nav a:hover {
+      color: var(--primary);
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      color: var(--primary);
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.6rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: var(--shadow);
+    }
+    .cta-button:hover,
+    .cta-button:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(91,61,255,0.3);
+    }
+    .cta-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      box-shadow: none;
+    }
+    main {
+      scroll-behavior: smooth;
+    }
+    section {
+      padding: clamp(4rem, 8vw, 6.5rem) 1.5rem;
+    }
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    h1, h2, h3 {
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-top: 0;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+    }
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+    }
+    h3 {
+      font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    }
+    p {
+      color: var(--text-muted);
+      margin: 0.5rem 0 0;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 20% 10%, rgba(91,61,255,0.1), transparent 60%),
+                  radial-gradient(circle at 80% 10%, rgba(255,140,66,0.15), transparent 60%),
+                  var(--bg-alt);
+    }
+    .hero .section-inner {
+      display: grid;
+      gap: clamp(2rem, 5vw, 3.5rem);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: center;
+    }
+    .hero-copy {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .metric-chip {
+      padding: 0.6rem 1rem;
+      background: rgba(91,61,255,0.08);
+      border-radius: 999px;
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .hero-visual {
+      background: linear-gradient(160deg, rgba(91,61,255,0.12), rgba(255,140,66,0.12));
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      position: relative;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 10%;
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(91,61,255,0.3);
+      pointer-events: none;
+    }
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .hero-visual img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+    }
+    .badge-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      align-items: center;
+    }
+    .badge-grid img {
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .badge-grid img:hover {
+      opacity: 1;
+    }
+    .value-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .value-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .value-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(91,61,255,0.12), transparent);
+      pointer-events: none;
+    }
+    .comparison-table {
+      margin-top: 2.5rem;
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 0.95rem;
+    }
+    .comparison-table th,
+    .comparison-table td {
+      border: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+      text-align: left;
+      background: var(--bg-alt);
+    }
+    .comparison-table th {
+      background: rgba(91,61,255,0.08);
+    }
+    .packs-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .pack-card {
+      background: var(--bg-alt);
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      display: grid;
+      gap: 1.1rem;
+      box-shadow: var(--shadow);
+    }
+    .pack-card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      display: grid;
+      gap: 0.4rem;
+      color: var(--text-muted);
+    }
+    .testimonial-carousel {
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .testimonial-card {
+      flex: 0 0 100%;
+      padding: 2rem;
+      background: var(--bg-alt);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1rem;
+    }
+    .testimonial-nav {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .testimonial-nav button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(91,61,255,0.2);
+      cursor: pointer;
+    }
+    .testimonial-nav button[aria-current="true"] {
+      background: var(--primary);
+    }
+    .pricing-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .pricing-card {
+      background: var(--bg-alt);
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius-md);
+      border: 2px solid transparent;
+      display: grid;
+      gap: 1rem;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+    .pricing-card.highlight {
+      border-color: var(--primary);
+    }
+    .pricing-card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      display: grid;
+      gap: 0.5rem;
+      color: var(--text-muted);
+    }
+    .pricing-tagline {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+    .integrations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .lead-magnet {
+      background: linear-gradient(120deg, rgba(91,61,255,0.12), rgba(255,140,66,0.15));
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+    .lead-content {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: center;
+    }
+    form {
+      display: grid;
+      gap: 1.1rem;
+    }
+    label {
+      font-weight: 600;
+      color: var(--text);
+    }
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+      color: var(--text);
+    }
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+    .checkbox-group {
+      display: grid;
+      gap: 0.6rem;
+    }
+    .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+    .consent {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .aria-live {
+      min-height: 1.5rem;
+      font-weight: 600;
+    }
+    details {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.4rem;
+      box-shadow: var(--shadow);
+    }
+    details + details {
+      margin-top: 1rem;
+    }
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+    }
+    summary:focus-visible {
+      outline: 2px solid var(--primary);
+      border-radius: 8px;
+    }
+    .trust-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .trust-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+    }
+    footer {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      padding: 3rem 1.5rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    .footer-bottom {
+      max-width: var(--max-width);
+      margin: 2rem auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    #back-to-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .sticky-cta {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      z-index: 800;
+      display: none;
+    }
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.08);
+    }
+    .cookie-banner button {
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    @media (min-width: 960px) {
+      .sticky-cta {
+        display: inline-flex;
+      }
+    }
+    @media (max-width: 720px) {
+      nav {
+        display: none;
+      }
+      header {
+        border-bottom: none;
+      }
+      .cta-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-visual {
+        padding: 1.5rem;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Parlios",
+      "url": "https://parlios.example.com",
+      "logo": "https://parlios.example.com/assets/parlios-logo.svg",
+      "sameAs": [
+        "https://www.linkedin.com/company/parlios",
+        "https://twitter.com/parlios"
+      ],
+      "description": "Parlios Engine™ transforme les petits business en organisations ultra-efficaces grâce à une IA sectorielle et une voix personnalisée.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "hello@parlios.example.com",
+        "telephone": "+33 1 86 95 24 10"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Parlios Engine™",
+      "description": "Suite IA pour commerces et créateurs : Prompt Library sectorielle, Data Layer voix personnalisée, packs Commerce, Creator, Reply.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Parlios"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "EUR",
+        "lowPrice": "149",
+        "highPrice": "499",
+        "offerCount": "3"
+      }
+    }
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Aller au contenu</a>
+  <header>
+    <div class="nav-container" role="navigation" aria-label="Navigation principale">
+      <a href="#" class="logo" aria-label="Retour au début">
+        <img src="assets/parlios-logo.svg" alt="Parlios" onerror="this.outerHTML='<span>Parlios</span>'" />
+        <span>Parlios Engine™</span>
+      </a>
+      <nav aria-label="Liens d'ancrage">
+        <ul>
+          <li><a href="#hero">Hero</a></li>
+          <li><a href="#packs">Packs</a></li>
+          <li><a href="#pricing">Tarifs</a></li>
+          <li><a href="#lead">Guide 48h</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <a class="cta-button" href="#lead" role="button">Démarrer en 48h</a>
+    </div>
+  </header>
+  <main id="main">
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <!--
+        section.hero
+        - But UX: capturer l'attention, clarifier la promesse et conduire vers CTA.
+        - KPIs: taux clic CTA primaire, scroll depth >50%, vues vidéo démo.
+        - Copy hooks: "From corner shop to global empire — Powered by Parlios Engine™", "480h/an gagnées".
+        - Eléments: headline, metrics chips, visuel produit, CTA primaire/secondaire, mini-nav.
+        - CTA: primaire "Démarrer en 48h", secondaire "Voir les packs".
+        - Tests A/B: couleur gradient vs solide, wording CTA ("Démarrer" vs "Planifier une démo").
+      -->
+      <div class="section-inner">
+        <div class="hero-copy">
+          <h1 id="hero-title">L'IA qui apprend ton métier et parle comme toi.</h1>
+          <p>Passe de 1h à 5 minutes de temps de réponse, gagne jusqu'à 480h/an et augmente de 50% ton engagement social grâce au Parlios Engine™ conçu pour les commerces et créateurs.</p>
+          <div class="hero-metrics" aria-label="Bénéfices chiffrés">
+            <span class="metric-chip">480h/an gagnées</span>
+            <span class="metric-chip">Réponses 10× plus rapides</span>
+            <span class="metric-chip">+50% d'engagement social</span>
+          </div>
+          <div class="cta-group">
+            <a class="cta-button" href="#lead">Démarrer en 48h</a>
+            <a class="cta-button cta-outline" href="#pricing">Voir les packs</a>
+          </div>
+          <p role="note">From corner shop to global empire — Powered by Parlios Engine™.</p>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <img src="assets/hero-parlios.png" alt="Capture du tableau de bord Parlios" loading="eager" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #5b3dff33, #ff8c4233)';" />
+        </div>
+      </div>
+    </section>
+
+    <section id="social-proof" class="social-proof" aria-labelledby="social-title">
+      <!--
+        section.social-proof
+        - But UX: rassurer via logos clients, intégrations, badges.
+        - KPIs: taux de confiance, clics sur logos/partenaires, réduction taux rebond.
+        - Copy hooks: "IA simple, concrète et abordable", "Intégrations clés".
+        - Eléments: logos, badges sécurité, stats micro.
+        - CTA: lien vers intégrations (dans nav).
+        - Tests A/B: ordre des logos, mention chiffrée "+1200 commerces".
+      -->
+      <div class="section-inner">
+        <h2 id="social-title">Déjà adopté par les commerces qui accélèrent</h2>
+        <p>Des équipes locales aux scale-ups en croissance, Parlios s'intègre à vos outils préférés en restant conforme RGPD.</p>
+        <div class="badge-grid" role="list">
+          <div role="listitem"><img src="assets/logo-shopify.svg" alt="Shopify" loading="lazy" onerror="this.outerHTML='<div style=\'font-weight:600;\'>Shopify</div>'"></div>
+          <div role="listitem"><img src="assets/logo-meta.svg" alt="Meta" loading="lazy" onerror="this.outerHTML='<div style=\'font-weight:600;\'>Meta</div>'"></div>
+          <div role="listitem"><img src="assets/logo-stripe.svg" alt="Stripe" loading="lazy" onerror="this.outerHTML='<div style=\'font-weight:600;\'>Stripe</div>'"></div>
+          <div role="listitem"><img src="assets/logo-canva.svg" alt="Canva" loading="lazy" onerror="this.outerHTML='<div style=\'font-weight:600;\'>Canva</div>'"></div>
+          <div role="listitem"><img src="assets/logo-gs1.svg" alt="GS1" loading="lazy" onerror="this.outerHTML='<div style=\'font-weight:600;\'>GS1</div>'"></div>
+          <div role="listitem"><img src="assets/logo-payfit.svg" alt="Payfit" loading="lazy" onerror="this.outerHTML='<div style=\'font-weight:600;\'>Payfit</div>'"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="value" class="value" aria-labelledby="value-title">
+      <!--
+        section.value
+        - But UX: expliquer la proposition de valeur différenciante.
+        - KPIs: clics vers packs, scroll, temps passé sur section.
+        - Copy hooks: "Prompt Library sectorielle", "Data Layer voix personnalisée".
+        - Eléments: deux cartes explicatives, schéma comparatif.
+        - CTA: lien "Comprendre Parlios Engine™" (ancre vers packs/pricing).
+        - Tests A/B: représentation schéma vs liste, icônes comparatif.
+      -->
+      <div class="section-inner">
+        <h2 id="value-title">Pourquoi Parlios Engine™ dépasse les IA généralistes</h2>
+        <div class="value-grid">
+          <article class="value-card" aria-labelledby="prompt-title">
+            <h3 id="prompt-title">Prompt Library sectorielle</h3>
+            <p>Des scénarios prêts à l'emploi pour commerce de proximité, créateurs et support client. Chaque prompt s'appuie sur vos données pour générer des réponses naturelles et contextualisées.</p>
+            <ul>
+              <li>Playbooks retail, food, beauty, services.</li>
+              <li>Réponses calibrées pour WhatsApp, Instagram, email.</li>
+              <li>Amélioration continue grâce aux retours en 1 clic.</li>
+            </ul>
+          </article>
+          <article class="value-card" aria-labelledby="data-title">
+            <h3 id="data-title">Data Layer à voix personnalisée</h3>
+            <p>Votre tonalité, vos offres et vos procédures deviennent la voix officielle. Le moteur ajuste chaque échange à vos rituels de marque et garde la conformité RGPD.</p>
+            <ul>
+              <li>Sync CRM, POS et support en temps réel.</li>
+              <li>Modèles custom entraînés sur vos scripts.</li>
+              <li>Audit de ton éditorial en continu.</li>
+            </ul>
+          </article>
+        </div>
+        <table class="comparison-table" aria-label="Comparatif Parlios vs IA généraliste">
+          <thead>
+            <tr>
+              <th>Capacités</th>
+              <th>Parlios Engine™</th>
+              <th>IA généraliste</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Voix de marque</td>
+              <td>Personnalisation profonde, tonalité alignée</td>
+              <td>Style générique, risque d'incohérence</td>
+            </tr>
+            <tr>
+              <td>Intégrations métiers</td>
+              <td>Shopify, WhatsApp, Canva en natif</td>
+              <td>Connecteurs génériques limités</td>
+            </tr>
+            <tr>
+              <td>Temps de déploiement</td>
+              <td>48 heures, onboarding assisté</td>
+              <td>Semaines de paramétrage</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="packs" class="packs" aria-labelledby="packs-title">
+      <!--
+        section.packs
+        - But UX: orienter vers le pack pertinent, montrer micro-flux.
+        - KPIs: clics CTA "Voir démo", conversions par pack.
+        - Copy hooks: "Commerce", "Creator", "Reply".
+        - Eléments: cartes pack, micro user flow, CTA démo.
+        - CTA: "Voir démo" par pack, anchor vers lead.
+        - Tests A/B: ordre cartes, visuel micro-flow, mention prix ou non.
+      -->
+      <div class="section-inner">
+        <h2 id="packs-title">Des packs conçus pour chaque façon de vendre</h2>
+        <div class="packs-grid" role="list">
+          <article class="pack-card" role="listitem" aria-labelledby="pack-commerce">
+            <h3 id="pack-commerce">Pack Commerce</h3>
+            <p>Automatisez les réponses boutique, gérez les paniers abandonnés et boostez les ventes locales.</p>
+            <ul>
+              <li>Micro-flow: client WhatsApp → réponse personnalisée → upsell produit.</li>
+              <li>Sync caisse & stock en temps réel.</li>
+              <li>Tableau opérations + alertes.</li>
+            </ul>
+            <a class="cta-button" href="#lead">Voir démo</a>
+          </article>
+          <article class="pack-card" role="listitem" aria-labelledby="pack-creator">
+            <h3 id="pack-creator">Pack Creator</h3>
+            <p>Transformez vos brouillons en contenus publiables et programmez vos réponses DM en automatique.</p>
+            <ul>
+              <li>Micro-flow: briefing vocal → script → post multi-réseaux.</li>
+              <li>Calendrier éditorial intelligent.</li>
+              <li>Monitoring +50% engagement social.</li>
+            </ul>
+            <a class="cta-button" href="#lead">Voir démo</a>
+          </article>
+          <article class="pack-card" role="listitem" aria-labelledby="pack-reply">
+            <h3 id="pack-reply">Pack Reply</h3>
+            <p>Déployez une IA support qui répond en 5 minutes et remonte les insights critiques à l'équipe.</p>
+            <ul>
+              <li>Micro-flow: email client → classification → réponse + ticket.</li>
+              <li>Macros custom et escalade assistée.</li>
+              <li>Suivi NPS et temps de résolution.</li>
+            </ul>
+            <a class="cta-button" href="#lead">Voir démo</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials" aria-labelledby="testimonials-title">
+      <!--
+        section.testimonials
+        - But UX: valider preuves sociales avec résultats concrets.
+        - KPIs: taux de confiance, scroll, partages.
+        - Copy hooks: "480h économisées", "+50% engagement".
+        - Eléments: slider testimoniaux, notes, rôle.
+        - CTA: renvoi lead magnet.
+        - Tests A/B: slider auto vs manuel, mise en avant des notes.
+      -->
+      <div class="section-inner">
+        <h2 id="testimonials-title">Ils ont propulsé leur activité avec Parlios</h2>
+        <div class="testimonial-carousel" aria-live="polite">
+          <div class="testimonial-track" id="testimonial-track">
+            <article class="testimonial-card">
+              <p><strong>⭐️⭐️⭐️⭐️⭐️ &nbsp; 5/5</strong></p>
+              <p>"En 48h, notre boutique est passée de 1h de délai à 4 minutes de réponse moyenne. L'équipe se concentre enfin sur les ventes terrain."</p>
+              <p><strong>Léa Martin</strong> — Directrice Retail, Maison Nova</p>
+              <p>Résultat: +32% de conversion WhatsApp, 420h économisées.</p>
+            </article>
+            <article class="testimonial-card">
+              <p><strong>⭐️⭐️⭐️⭐️☆ &nbsp; 4,8/5</strong></p>
+              <p>"Le pack Creator nous a permis de doubler la cadence de publication sans perdre la voix de notre marque."</p>
+              <p><strong>Samuel Ortiz</strong> — Fondateur, Studio Ortiz</p>
+              <p>Résultat: +58% d'engagement, 8 campagnes livrées/mois.</p>
+            </article>
+            <article class="testimonial-card">
+              <p><strong>⭐️⭐️⭐️⭐️⭐️ &nbsp; 5/5</strong></p>
+              <p>"Le data layer Parlios aligne nos scripts support sur notre ton. Satisfaction client à 95% et escalades divisées par 3."</p>
+              <p><strong>Yasmine K.</strong> — Head of Support, ReplyFlow</p>
+              <p>Résultat: 10× plus rapide, 520h/an économisées.</p>
+            </article>
+          </div>
+          <div class="testimonial-nav" role="tablist" aria-label="Témoignages">
+            <button type="button" data-slide="0" aria-label="Témoignage 1" aria-current="true"></button>
+            <button type="button" data-slide="1" aria-label="Témoignage 2"></button>
+            <button type="button" data-slide="2" aria-label="Témoignage 3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing" aria-labelledby="pricing-title">
+      <!--
+        section.pricing
+        - But UX: présenter les offres claires, inciter essai rapide.
+        - KPIs: clic CTA pack, conversion formulaire, panier moyen.
+        - Copy hooks: "Démarrer en 48h", "scénarios inclus".
+        - Eléments: 3 colonnes, badges intégrations.
+        - CTA: "Choisir ce plan".
+        - Tests A/B: mise en avant Pro vs Premium, ajout prix.
+      -->
+      <div class="section-inner">
+        <h2 id="pricing-title">Choisissez votre accélération en 48h</h2>
+        <p>Chaque plan inclut l'onboarding guidé, la Prompt Library sectorielle et la Data Layer personnalisée.</p>
+        <div class="pricing-grid" role="list">
+          <article class="pricing-card" role="listitem" aria-labelledby="starter-title">
+            <h3 id="starter-title">Starter</h3>
+            <p class="pricing-tagline">149€ / mois</p>
+            <p>Idéal pour boutiques de quartier et premiers créateurs.</p>
+            <ul>
+              <li>Onboarding 48h + 3 scénarios inclus.</li>
+              <li>Automations WhatsApp & Instagram.</li>
+              <li>Tableau insights hebdo.</li>
+            </ul>
+            <a class="cta-button" href="#lead">Choisir ce plan</a>
+            <div class="integrations" aria-label="Intégrations disponibles">
+              <span>Shopify</span><span>Instagram</span><span>WhatsApp</span>
+            </div>
+          </article>
+          <article class="pricing-card highlight" role="listitem" aria-labelledby="pro-title">
+            <h3 id="pro-title">Pro</h3>
+            <p class="pricing-tagline">299€ / mois</p>
+            <p>Pour équipes multi-canales qui veulent industrialiser leurs flux.</p>
+            <ul>
+              <li>Onboarding 48h + 6 scénarios inclus.</li>
+              <li>Data Layer avancée + scoring prospects.</li>
+              <li>Connecteurs Shopify, Stripe, HubSpot.</li>
+            </ul>
+            <a class="cta-button" href="#lead">Choisir ce plan</a>
+            <div class="integrations" aria-label="Intégrations disponibles">
+              <span>Shopify</span><span>WhatsApp</span><span>Stripe</span><span>HubSpot</span>
+            </div>
+          </article>
+          <article class="pricing-card" role="listitem" aria-labelledby="premium-title">
+            <h3 id="premium-title">Premium</h3>
+            <p class="pricing-tagline">499€ / mois</p>
+            <p>Support 24/7, workflows complexes et SLA piloté.</p>
+            <ul>
+              <li>Onboarding 48h + 10 scénarios sur-mesure.</li>
+              <li>Voice ops multilingue, escalade IA → humain.</li>
+              <li>Support prioritaire & audit mensuel.</li>
+            </ul>
+            <a class="cta-button" href="#lead">Choisir ce plan</a>
+            <div class="integrations" aria-label="Intégrations disponibles">
+              <span>Shopify</span><span>WhatsApp</span><span>Instagram</span><span>Canva</span><span>Zapier</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="lead" class="lead-magnet" aria-labelledby="lead-title">
+      <!--
+        section.lead-magnet
+        - But UX: capturer leads qualifiés via guide 48h.
+        - KPIs: taux soumission, téléchargement guide, taux opt-in.
+        - Copy hooks: "Guide 48h", "1h → 5 min".
+        - Eléments: mock PDF, formulaire court, consentement.
+        - CTA: "Recevoir le guide".
+        - Tests A/B: format du formulaire, image vs icône.
+      -->
+      <div class="section-inner lead-content">
+        <div>
+          <h2 id="lead-title">Téléchargez le guide 48h pour passer de 1h à 5 minutes</h2>
+          <p>Un plan d'action concret pour transformer vos réponses client, automatiser vos contenus et garder votre voix unique.</p>
+          <div style="background: var(--bg-alt); border-radius: var(--radius-md); padding: 1.5rem; display: inline-flex; align-items: center; gap: 1rem; box-shadow: var(--shadow);">
+            <img src="assets/guide-mock.png" alt="Aperçu du guide Parlios" width="96" height="128" loading="lazy" onerror="this.outerHTML='<div style=\'width:96px;height:128px;background:linear-gradient(135deg,#5b3dff33,#ff8c4233);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--primary);\'>PDF</div>'" />
+            <div>
+              <strong>Inside:</strong>
+              <ul style="margin:0;padding-left:1rem;color:var(--text-muted);">
+                <li>Playbook réponses instantanées.</li>
+                <li>Checklist data layer personnalisée.</li>
+                <li>Tableur calcul ROI.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <form id="lead-form" novalidate aria-describedby="form-status" aria-label="Formulaire guide 48h">
+          <div>
+            <label for="first-name">Prénom *</label>
+            <input id="first-name" name="first-name" type="text" autocomplete="given-name" required placeholder="Ex: Camille" />
+          </div>
+          <div>
+            <label for="email">Email professionnel *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="vous@entreprise.com" />
+          </div>
+          <div>
+            <label for="role">Votre rôle *</label>
+            <select id="role" name="role" required>
+              <option value="">Choisissez...</option>
+              <option>Dirigeant(e)</option>
+              <option>Responsable marketing</option>
+              <option>Responsable boutique</option>
+              <option>Community manager</option>
+              <option>Support client</option>
+            </select>
+          </div>
+          <fieldset class="checkbox-group">
+            <legend>Pack(s) d'intérêt *</legend>
+            <div class="checkbox-option">
+              <input type="checkbox" id="interest-commerce" name="packs" value="Commerce" required />
+              <label for="interest-commerce">Commerce</label>
+            </div>
+            <div class="checkbox-option">
+              <input type="checkbox" id="interest-creator" name="packs" value="Creator" />
+              <label for="interest-creator">Creator</label>
+            </div>
+            <div class="checkbox-option">
+              <input type="checkbox" id="interest-reply" name="packs" value="Reply" />
+              <label for="interest-reply">Reply</label>
+            </div>
+          </fieldset>
+          <div aria-hidden="true" style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;">
+            <label for="company-website">Laissez ce champ vide</label>
+            <input type="text" id="company-website" name="company-website" tabindex="-1" autocomplete="off" />
+          </div>
+          <div class="consent">
+            <input type="checkbox" id="consent" required />
+            <label for="consent">Je souhaite recevoir le guide et des conseils Parlios (désinscription à tout moment).</label>
+          </div>
+          <div class="aria-live" id="form-status" role="status" aria-live="polite"></div>
+          <button type="submit" class="cta-button">Recevoir le guide</button>
+          <p style="font-size:0.8rem;color:var(--text-muted);">En envoyant ce formulaire, vous acceptez notre <a href="#trust">Politique de confidentialité</a>. Fallback mail: <a href="mailto:hello@parlios.example.com?subject=Guide%2048h">hello@parlios.example.com</a></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="faq" class="faq" aria-labelledby="faq-title">
+      <!--
+        section.faq
+        - But UX: lever objections, réduire friction.
+        - KPIs: taux scroll complet, réduction questions sales, conversion post-lecture.
+        - Copy hooks: "RGPD", "intégrations", "déploiement 48h".
+        - Eléments: 6 Q/R accordéon.
+        - CTA: rappel CTA lead.
+        - Tests A/B: ordre questions, formulation.
+      -->
+      <div class="section-inner">
+        <h2 id="faq-title">Questions fréquentes</h2>
+        <details>
+          <summary>Combien de temps pour déployer Parlios ?</summary>
+          <p>Notre équipe vous accompagne pour un onboarding complet en 48h, incluant la configuration de la Prompt Library et de votre Data Layer.</p>
+        </details>
+        <details>
+          <summary>Quelles intégrations sont disponibles ?</summary>
+          <p>Shopify, WhatsApp, Instagram, Stripe, Canva, HubSpot et d'autres via API ou Zapier.</p>
+        </details>
+        <details>
+          <summary>Parlios est-il conforme RGPD ?</summary>
+          <p>Oui, hébergement en UE, chiffrement des données en transit et au repos, contrat de sous-traitance disponible.</p>
+        </details>
+        <details>
+          <summary>Quel support est inclus ?</summary>
+          <p>Starter: support email. Pro: chat + email 5j/7. Premium: support 24/7 avec SLA.</p>
+        </details>
+        <details>
+          <summary>Comment Parlios se différencie d'une IA générique ?</summary>
+          <p>Parlios Engine™ combine prompts sectoriels, données propres et tonalité personnalisée pour des réponses crédibles et actionnables.</p>
+        </details>
+        <details>
+          <summary>Puis-je tester avant de m'engager ?</summary>
+          <p>Réservez une démo et recevez un scénario personnalisé dans le guide 48h. L'abonnement est sans engagement les 30 premiers jours.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="trust" class="trust" aria-labelledby="trust-title">
+      <!--
+        section.trust
+        - But UX: renforcer confiance (sécurité, RGPD, contact direct).
+        - KPIs: clics email/téléphone, baisse abandon formulaire.
+        - Copy hooks: "Sécurité", "RGPD", "Support réel".
+        - Eléments: cartes sécurité, contact, garanties.
+        - CTA: contact direct.
+        - Tests A/B: mention certifications vs logos.
+      -->
+      <div class="section-inner">
+        <h2 id="trust-title">Sécurité, conformité et support humain</h2>
+        <div class="trust-grid">
+          <article class="trust-card">
+            <h3>Conformité RGPD</h3>
+            <p>Données hébergées dans l'UE, sous-traitants audités, registre de traitements disponible sur demande.</p>
+            <p><strong>DPO:</strong> privacy@parlios.example.com</p>
+          </article>
+          <article class="trust-card">
+            <h3>Sécurité</h3>
+            <p>Chiffrement TLS 1.3, audits trimestriels, gestion des accès Zero Trust. Certifications ISO/IEC 27001 en cours.</p>
+          </article>
+          <article class="trust-card">
+            <h3>Support & Coordonnées</h3>
+            <p>Conseiller dédié dès le plan Pro. Ligne directe: <a href="tel:+33186952410">+33 1 86 95 24 10</a></p>
+            <p>Adresse: 24 rue des Artisans, 75011 Paris.</p>
+          </article>
+          <article class="trust-card">
+            <h3>Mentions & documents</h3>
+            <p>Consultez notre <a href="#">Politique de confidentialité</a>, <a href="#">Conditions générales</a> et <a href="#">Charte sécurité</a>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer aria-label="Pied de page">
+    <!--
+      footer
+      - But UX: terminer parcours, fournir ressources légales et CTA secondaire.
+      - KPIs: clics contact, inscriptions newsletter, scroll complet.
+      - Copy hooks: "Powered by Parlios Engine™".
+      - Eléments: liens, coordonnées, CTA.
+      - CTA: "Planifier un appel".
+      - Tests A/B: format CTA, icônes réseaux.
+    -->
+    <div class="footer-inner">
+      <div>
+        <h3>Parlios</h3>
+        <p>From corner shop to global empire — Powered by Parlios Engine™.</p>
+        <a class="cta-button cta-outline" href="#lead">Planifier un appel</a>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:0.4rem;">
+          <li><a href="#packs">Commerce</a></li>
+          <li><a href="#packs">Creator</a></li>
+          <li><a href="#packs">Reply</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ressources</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:0.4rem;">
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#trust">Sécurité & RGPD</a></li>
+          <li><a href="#lead">Guide 48h</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:0.4rem;">
+          <li><a href="mailto:hello@parlios.example.com">hello@parlios.example.com</a></li>
+          <li><a href="tel:+33186952410">+33 1 86 95 24 10</a></li>
+          <li><a href="https://linkedin.com/company/parlios">LinkedIn</a></li>
+          <li><a href="https://twitter.com/parlios">Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="current-year"></span> Parlios. Tous droits réservés.</span>
+      <span><a href="#">Mentions légales</a> · <a href="#">Politique de cookies</a> · <a href="#">Accessibilité</a></span>
+    </div>
+  </footer>
+
+  <a class="cta-button sticky-cta" href="#lead">Démarrer en 48h</a>
+  <button id="back-to-top" aria-label="Revenir en haut">↑</button>
+
+  <div class="cookie-banner" role="dialog" aria-live="polite" aria-label="Bannière cookies" id="cookie-banner">
+    <span>Nous utilisons des cookies analytiques pour améliorer l'expérience Parlios. Aucun cookie marketing par défaut.</span>
+    <button id="accept-cookies">OK pour les cookies</button>
+    <a href="#">Préférences</a>
+  </div>
+
+  <!-- Placeholder analytics script (désactivé) -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
+
+  <script>
+    const form = document.getElementById('lead-form');
+    const statusEl = document.getElementById('form-status');
+    const pdfPath = 'assets/parlios-guide-48h.pdf';
+
+    function validateCheckboxGroup() {
+      const checkboxes = Array.from(form.querySelectorAll('input[name="packs"]'));
+      const isChecked = checkboxes.some(cb => cb.checked);
+      checkboxes.forEach(cb => cb.required = !isChecked);
+      return isChecked;
+    }
+
+    form.addEventListener('change', event => {
+      if (event.target.name === 'packs') {
+        validateCheckboxGroup();
+      }
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      statusEl.textContent = '';
+      const honeypot = form.querySelector('#company-website');
+      if (honeypot.value) {
+        statusEl.textContent = 'Soumission détectée comme spam.';
+        statusEl.style.color = 'var(--secondary)';
+        return;
+      }
+      const isCheckboxValid = validateCheckboxGroup();
+      if (!form.checkValidity() || !isCheckboxValid) {
+        form.reportValidity();
+        statusEl.textContent = 'Vérifiez les champs requis.';
+        statusEl.style.color = 'var(--secondary)';
+        return;
+      }
+      statusEl.textContent = 'Envoi en cours…';
+      statusEl.style.color = 'var(--text-muted)';
+      try {
+        const response = await fetch(pdfPath, { method: 'HEAD' });
+        if (!response.ok) {
+          throw new Error('Guide indisponible');
+        }
+        const link = document.createElement('a');
+        link.href = pdfPath;
+        link.download = 'parlios-guide-48h.pdf';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        statusEl.textContent = 'Merci ! Le guide se télécharge. Nous revenons vers vous sous 24h.';
+        statusEl.style.color = 'var(--primary)';
+        form.reset();
+      } catch (error) {
+        statusEl.textContent = "Merci ! Nous vous envoyons le guide par email (fichier indisponible en direct).";
+        statusEl.style.color = 'var(--primary)';
+        form.reset();
+      }
+    });
+
+    // Testimonial carousel
+    const track = document.getElementById('testimonial-track');
+    const navButtons = Array.from(document.querySelectorAll('.testimonial-nav button'));
+    navButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const slideIndex = Number(button.dataset.slide);
+        const offset = -100 * slideIndex;
+        track.style.transform = `translateX(${offset}%)`;
+        navButtons.forEach(btn => btn.setAttribute('aria-current', 'false'));
+        button.setAttribute('aria-current', 'true');
+      });
+    });
+
+    // Back to top visibility
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Cookie banner
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookies = document.getElementById('accept-cookies');
+    acceptCookies.addEventListener('click', () => {
+      cookieBanner.style.display = 'none';
+      localStorage.setItem('parliosCookies', 'accepted');
+    });
+    if (localStorage.getItem('parliosCookies') === 'accepted') {
+      cookieBanner.style.display = 'none';
+    }
+
+    // Current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
