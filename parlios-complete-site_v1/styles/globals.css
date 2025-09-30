@@ -1,0 +1,15 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{ --radius-lg:1.25rem; }
+body{background:#0A0F1A;color:#EAF2FF}
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.section{padding:4rem 0}
+.card{background:#0F1626;border:1px solid rgba(255,255,255,.06);border-radius:1.25rem;padding:1.25rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1rem;border-radius:1rem}
+.btn-primary{background:#FF4D1C;color:#fff}
+.btn-ghost{background:#0F1626;border:1px solid rgba(255,255,255,.1);color:#B8C7E3}
+h1{font-weight:800;font-size:3rem;line-height:1.1}
+h2{font-weight:700;font-size:2rem;line-height:1.2;margin-bottom:1rem}
+.lead{color:#B8C7E3;font-size:1.125rem}
