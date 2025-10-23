@@ -1,0 +1,16 @@
+name: knowledge-lint
+on:
+  push: { branches: ["main"] }
+  pull_request: { branches: ["main"] }
+jobs:
+  lint-md-frontmatter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check front-matter (title/last_review/tags)
+        run: |
+          for f in ; do
+            head -n 32 "" | grep -qi 'title:' || echo "::warning file=::Missing title"
+            head -n 64 "" | grep -qi 'last_review:' || echo "::warning file=::Missing last_review"
+            head -n 64 "" | grep -qi 'tags:' || echo "::warning file=::Missing tags"
+          done
